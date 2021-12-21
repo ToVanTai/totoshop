@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@400;500;700;900&display=swap");
+/* 
+@media only screen and (max-width: 576px) xs 576
+@media only screen and (min-width: 577px) and (max-width: 768px) sm 768
+@media only screen and (min-width: 769px) and (max-width: 992px) md 992
+@media only screen and (min-width: 993px) and (max-width: 1200px) lg 1200
+@media only screen and (min-width: 1201px) xl
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 62.5%;
+}
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (max-width: 576px) {
+  html {
+    font-size: 37.5%;
+  }
+}
+
+body {
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */
