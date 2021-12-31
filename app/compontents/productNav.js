@@ -1,4 +1,4 @@
-import * as conFig from "../constants/conFig.js";
+import * as conFig from "../constants/config.js";
 import * as callApi from "../utils/callApi.js";
 // toggle main nav
 (function () {
