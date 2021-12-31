@@ -1,0 +1,244 @@
+@use "./../../../abtracts/" as *;
+.main__nav {
+    overflow: hidden;
+    transition: left 0.4s;
+
+    width: $nav-width;
+    @include smallDevice {
+        left: -100%;
+        overflow-y: auto;
+        height: 100vh;
+        width: $nav-width-shrink;
+    }
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: $color-white;
+    &__logo {
+        padding: 40px;
+        @include mobile {
+            padding: 25px;
+            padding-bottom: 0px;
+        }
+        @include tablet {
+            padding: 35px;
+            padding-bottom: 20px;
+        }
+        &__img {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    &__header {
+        padding: 20px;
+        @include flex(center, center);
+        &__user,
+        &__search,
+        &__love,
+        &__cart {
+            > a {
+                display: inline-block;
+                position: relative;
+            }
+            i {
+                color: $color-text;
+                font-size: 2.8rem;
+                @include smallDevice {
+                    font-size: 3.8rem;
+                }
+                padding: 0px 8px;
+                cursor: pointer;
+                transition: color 0.4s;
+            }
+            i:hover {
+                color: $color-primary;
+            }
+            span {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                @include flex(center, center);
+                background-color: $color-black;
+                color: $color-white;
+                font-size: 1.3rem;
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translateY(-50%);
+            }
+        }
+        &__cart,
+        &__search {
+            @include smallDevice {
+                display: none;
+            }
+        }
+    }
+    &__list {
+        overflow-y: auto;
+        max-height: 296px;
+        @include smallDevice {
+            max-height: 100%;
+        }
+    }
+
+    &__item {
+        position: relative;
+        > a {
+            text-align: center;
+            display: block;
+            padding: 18px 15px;
+            color: $color-black;
+            font-size: 1.8rem;
+            @include smallDevice {
+                font-size: 2.4rem;
+            }
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0s, background-color 0.4s, text-decoration 0.4s;
+            border-bottom: 2px solid $color-black-third;
+        }
+        > a:hover {
+            color: $color-primary;
+            background-color: $color-black-third;
+            text-decoration: underline;
+        }
+        &__sale {
+            position: absolute;
+            top: 0;
+            background-color: red;
+            color: $color-white;
+            font-size: 1.3rem;
+            text-transform: capitalize;
+            padding: 2px 8px;
+            line-height: 1.3rem;
+            border-radius: 3px;
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                border-width: 5px 5px;
+                border-color: transparent;
+                border-style: solid;
+                border-top-color: red;
+                transform: translate(50%, 100%);
+            }
+        }
+    }
+    &__close {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        span {
+            display: inline-block;
+            font-size: 5rem;
+            cursor: pointer;
+            color: $color-text;
+            transition: color 0.3s;
+            line-height: 35px;
+            padding: 0px 7px;
+            @include mobile {
+                line-height: 25px;
+                padding: 0px 5px;
+            }
+        }
+        span:hover {
+            color: $color-white;
+            background-color: $color-black;
+        }
+        @include smallDevice {
+            display: block;
+        }
+    }
+}
+.main__nav.show {
+    @include smallDevice {
+        left: 0%;
+    }
+}
+.main__nav__mobile {
+    &__overlay {
+        cursor: pointer;
+        position: fixed;
+        z-index: 9998;
+        background-color: $bg-overlay;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        left: -100%;
+        transition: left 0.4s;
+        @include smallDevice {
+            &.show {
+                left: 0;
+            }
+        }
+    }
+
+    height: 78px;
+    background-color: $color-white;
+    padding: 10px 15px;
+    @include flex(space-between, center);
+    display: none;
+    @include smallDevice {
+        display: flex;
+    }
+    &__control {
+        cursor: pointer;
+        > i {
+            font-size: 3.8rem;
+            color: $color-black;
+            @include smallDevice {
+                font-size: 4.8rem;
+            }
+        }
+    }
+    &__logo {
+        @include flex(center, center);
+        > img {
+            width: 100%;
+            height: 54px;
+            object-fit: cover;
+        }
+    }
+    &__content {
+        @include flex(center, center);
+    }
+    &__search > i,
+    &__cart > span > i {
+        font-size: 3.6rem;
+        @include smallDevice {
+            font-size: 4.6rem;
+        }
+        color: $color-black;
+        transition: color 0.4s;
+        cursor: pointer;
+    }
+    &__search > i:hover,
+    &__cart > span > i:hover {
+        color: $color-primary;
+    }
+    &__cart > span {
+        display: inline-block;
+        position: relative;
+        > span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            background-color: $color-black;
+            color: $color-white;
+            font-size: 1.3rem;
+            border-radius: 50%;
+            @include flex(center, center);
+        }
+    }
+}

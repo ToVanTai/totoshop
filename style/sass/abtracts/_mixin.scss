@@ -23,6 +23,11 @@
         @content;
     }
 }
+@mixin smallDevice {
+    @media only screen and (max-width: $md-width) {
+        @content;
+    }
+}
 // @mixin sm {
 //     @media only screen and (min-width: 1 + $xs-width) and (max-width: $sm-width) {
 //         @content;

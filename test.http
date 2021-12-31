@@ -1,0 +1,20 @@
+
+#lấy sản phẩm new arrivals theo page . trang home.
+GET https://js-totoshop.herokuapp.com/api/categories/1/products/?_page=5&_limit=8
+
+###
+#lấy slide
+GET https://js-totoshop.herokuapp.com/api/slides
+
+###
+#lấy product có isSale =true
+GET https://js-totoshop.herokuapp.com/api/products?isSale=true&_page=1&_limit=8
+
+###
+#lấy product theo category trang sản phẩm
+GET https://js-totoshop.herokuapp.com/api/categories/2/products/?_page=1&_limit=8
+
+###
+#lấy categories theo tên
+GET https://js-totoshop.herokuapp.com/api/categories?name=áo khoác
+
