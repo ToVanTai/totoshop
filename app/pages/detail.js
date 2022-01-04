@@ -1,6 +1,5 @@
 import "../compontents/nav.js";
-import "../compontents/sliders.js";
-import "../compontents/productProducts.js";
+import "../compontents/detailProduct.js";
 import "../compontents/footer.js";
 // show button scroll top when scrolltop > clientHeight;
 let clientHeight = document.documentElement.clientHeight;

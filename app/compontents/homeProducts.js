@@ -1,12 +1,8 @@
 import * as conFig from "./../constants/config.js";
 import * as callApi from "./../utils/callApi.js";
-const urlSearchParams = new URLSearchParams(window.location.search);
-let params = Object.fromEntries(urlSearchParams.entries());
-let location = window.location;
-let pathName = location.pathname;
-let limit = 8;
-let currentPage = 1;
-let namePage = "products";
+import getPage from "./../utils/getPage.js";
+let currentPage = getPage(window.location.search);
+let nameTable = "products";
 let dataUrl = "";
 let listPage = [];
 let pageShowing;
@@ -18,29 +14,7 @@ function findPage(list, item) {
     }
     return false;
 }
-
-// là trang chủ thì set page,se dataurl
-if (
-    pathName == "/trang_chu/index.html" ||
-    pathName == "/trang_chu/" ||
-    pathName == "/totoshop/trang_chu/" ||
-    pathName == "/totoshop/trang_chu/index.html"
-) {
-    // đang ở trang chủ
-    //page trang hiện tại
-
-    if (params.page) {
-        currentPage = params.page;
-        let myRegular = /[\D]/g;
-        if (myRegular.test(currentPage) === true) {
-            currentPage = 1;
-        }
-    }
-    if (currentPage < 1) {
-        currentPage = 1;
-    }
-    dataUrl = `categories/1/${namePage}/?_page=${currentPage}&_limit=${limit}`;
-}
+dataUrl = `categories/1/${nameTable}/?_page=${currentPage}&_limit=${conFig.limit}`;
 
 function onChangePagination(dataPage) {
     const url = new URL(window.location);
@@ -62,9 +36,9 @@ function pendingProducts() {
 }
 window.onChangePagination = onChangePagination;
 function addNewProducts(dataPage) {
-    dataUrl = `categories/1/${namePage}/?_page=${dataPage}&_limit=${limit}`;
+    dataUrl = `categories/1/${nameTable}/?_page=${dataPage}&_limit=${conFig.limit}`;
     let pmNewProduct = new Promise((resolve, reject) => {
-        callApi.httpGetMedhod(dataUrl, resolve, reject, pendingProducts);
+        callApi.httpGetMethod(dataUrl, resolve, reject, pendingProducts);
     });
     pmNewProduct.then((res) => {
         setTimeout(() => {
@@ -79,7 +53,7 @@ function addNewProducts(dataPage) {
     });
 }
 let pmProduct = new Promise((resolve, reject) => {
-    callApi.httpGetMedhod(dataUrl, resolve, reject, pendingProducts);
+    callApi.httpGetMethod(dataUrl, resolve, reject, pendingProducts);
 });
 pmProduct.then((res) => {
     setTimeout(() => {
@@ -142,6 +116,7 @@ function replaceExtraImg(event) {
 
 window.replaceExtraImg = replaceExtraImg;
 function renderProduct(data) {
+    let hrefDetailProduct = `${conFig.origin}/${conFig.pages.trang_chi_tiet_san_pham}/index.html?id=${data.id}`;
     function renderProductExtra(dataEt) {
         let exHtml = ``;
         if (dataEt.length > 0) {
@@ -157,8 +132,8 @@ function renderProduct(data) {
     if (data.isSale === true) {
         let newPrice = data.price * (0.1 * data.discount);
         html += `<div class="product__item discount col-xs-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">`;
-        html += `<a href="" data-img="${data.mainImg}" class="product__item__img">`;
-        html += `<img  class="img-main" src="${data.mainImg}" alt="" />`;
+        html += `<a href="${hrefDetailProduct}" data-img="${data.mainImg}" class="product__item__img">`;
+        html += `<img  class="img-main"  src="${data.mainImg}" alt="" />`;
         html += `<span class="img-discount">-${data.discount}% </span>`;
         html += `<div class="product__item__img-list" >`;
         html += renderProductExtra(data.imgs);
@@ -171,7 +146,7 @@ function renderProduct(data) {
         html += `</div>`;
     } else {
         html += `<div class="product__item col-xs-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">`;
-        html += `<a data-img="${data.mainImg}" class="product__item__img">`;
+        html += `<a href="${hrefDetailProduct}" data-img="${data.mainImg}" class="product__item__img">`;
         html += `<img class="img-main" src="${data.mainImg}" alt="" />`;
         html += `<div onmouseleave="replaceExtraImg(event)" class="product__item__img-list">`;
         html += renderProductExtra(data.imgs);

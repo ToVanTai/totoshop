@@ -1,0 +1,47 @@
+@use "./../../../abtracts/" as *;
+.policy__container {
+    padding: 30px;
+    @include mobile {
+        padding: 20px;
+    }
+}
+.policy {
+    &__heading {
+        font-size: 2.4rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        color: $color-text;
+        @include tablet {
+            font-size: 2.8rem;
+        }
+        @include mobile {
+            font-size: 3.2rem;
+        }
+    }
+    &__time {
+        font-size: 1.6rem;
+        color: $color-text;
+        margin: 30px 0px;
+        font-weight: 300;
+        b {
+            color: $color-primary;
+            font-weight: 400;
+            text-transform: capitalize;
+        }
+        @include tablet {
+            font-size: 2.2rem;
+            margin: 20px 0px;
+        }
+        @include mobile {
+            font-size: 2.6rem;
+            margin: 10px 0px;
+        }
+    }
+    &__content {
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}

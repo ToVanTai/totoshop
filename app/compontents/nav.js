@@ -19,17 +19,24 @@ import * as callApi from "../utils/callApi.js";
     overlay.addEventListener("click", close);
 })();
 const navPromise = new Promise((resolve, reject) => {
-    callApi.httpGetMedhod("categories", resolve, reject);
+    callApi.httpGetMethod("categories", resolve, reject);
 });
+let hrefNavItem = `${conFig.origin}/${conFig.pages.trang_san_pham}/index.html`;
+let hrefHome = `${conFig.origin}/${conFig.pages.trang_chu}/index.html`;
+conFig.$(".main__nav__logo__img").href = hrefHome;
+conFig.$(".main__nav__mobile__logo").href = hrefHome;
 navPromise.then((res) => {
     let data = JSON.parse(res.responseText);
     if (data.length > 0) {
+        let date = new Date();
         let mainNav = conFig.$(".main__nav__list");
         mainNav.innerHTML = "";
         mainNav.innerHTML = renderNavItems(data);
         let afterHtml = "";
-        afterHtml += `<li class="main__nav__item"><a href="#">
-        <span class="main__nav__item__sale">hot</span>săn sale tháng 12</a></li>`;
+        afterHtml += `<li class="main__nav__item"><a href="${hrefNavItem}?isSale=true">
+        <span class="main__nav__item__sale">hot</span>săn sale tháng ${
+            date.getMonth() + 1
+        }</a></li>`;
         afterHtml += `<li class="main__nav__item"><a href="#"> chính sách </a></li>`;
         mainNav.innerHTML += afterHtml;
     }
@@ -37,7 +44,7 @@ navPromise.then((res) => {
 function renderNavItems(list) {
     let html = "";
     list.forEach((el) => {
-        html += `<li class="main__nav__item"><a href="#"> ${el.name} </a></li>`;
+        html += `<li class="main__nav__item"><a href="${hrefNavItem}?name=${el.name}"> ${el.name} </a></li>`;
     });
     return html;
 }

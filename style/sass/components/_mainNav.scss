@@ -1,4 +1,4 @@
-@use "./../../../abtracts/" as *;
+@use "./../abtracts/" as *;
 .main__nav {
     overflow: hidden;
     transition: left 0.4s;
@@ -129,6 +129,14 @@
                 border-top-color: red;
                 transform: translate(50%, 100%);
             }
+        }
+    }
+    &__item.active {
+        > a {
+            color: $color-white;
+            background-color: $color-black;
+            text-decoration: none !important;
+            cursor: default;
         }
     }
     &__close {

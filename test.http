@@ -18,3 +18,10 @@ GET https://js-totoshop.herokuapp.com/api/categories/2/products/?_page=1&_limit=
 #lấy categories theo tên
 GET https://js-totoshop.herokuapp.com/api/categories?name=áo khoác
 
+###
+#lay product theo id
+GET https://js-totoshop.herokuapp.com/api/products/1
+
+###
+#lay chinh sach,thongtin,faq
+GET https://js-totoshop.herokuapp.com/api/chinhsach?name=chính sach bảo hành

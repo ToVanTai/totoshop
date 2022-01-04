@@ -3,7 +3,7 @@ import * as callApi from "./../utils/callApi.js";
 import Swiper from "https://unpkg.com/swiper@7/swiper-bundle.esm.browser.min.js";
 (function () {
     let myPm = new Promise((resolve, reject) => {
-        callApi.httpGetMedhod("slides", resolve, reject);
+        callApi.httpGetMethod("slides", resolve, reject);
     });
     myPm.then((res) => {
         let data = JSON.parse(res.responseText);
