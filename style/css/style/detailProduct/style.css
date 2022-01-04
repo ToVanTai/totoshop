@@ -648,6 +648,105 @@ footer hr {
   align-items: center;
 }
 
+.main__search {
+  position: fixed;
+  z-index: 10001;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.main__search__container {
+  background-color: #fff;
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+@media only screen and (max-width: 576px) {
+  .main__search__container {
+    width: 310px;
+  }
+}
+.main__search__container .button-search,
+.main__search__container .input,
+.main__search__container .button-close {
+  display: inline-block;
+}
+.main__search__container .button-search i,
+.main__search__container .button-close {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #fff;
+  background-color: #bbb;
+  line-height: calc(4rem + 2px);
+  cursor: pointer;
+  width: 35px;
+  transition: all 0.3s;
+}
+@media only screen and (max-width: 576px) {
+  .main__search__container .button-search i,
+.main__search__container .button-close {
+    line-height: calc(5rem + 2px);
+  }
+}
+.main__search__container .button-search i:hover,
+.main__search__container .button-close:hover {
+  background-color: #000;
+}
+.main__search__container .button-close {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.main__search__container .button-search i {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.main__search__container .input {
+  flex-grow: 1;
+}
+.main__search__container .input input {
+  width: 100%;
+  font-size: 1.6rem;
+  color: #2d2d2d;
+  line-height: 4rem;
+  padding-left: 5px;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  border: 1px solid #d8d8d8;
+}
+@media only screen and (max-width: 576px) {
+  .main__search__container .input input {
+    line-height: 5rem;
+    font-size: 2.2rem;
+  }
+}
+
+.main__search.show {
+  display: flex;
+}
+
+.search__overlay {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.search__overlay.show {
+  display: block;
+  cursor: pointer;
+}
+
 .product__main,
 .product__about {
   padding: 0px 30px;

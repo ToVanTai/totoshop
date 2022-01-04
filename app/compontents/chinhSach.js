@@ -21,7 +21,12 @@ function renderPolicy(data) {
     let policyHeading = document.querySelector(".policy__heading p");
     policyHeading.innerHTML = `${data.name} totoshop`;
     let policyTime = document.querySelector(".policy__time p");
-    policyTime.innerHTML = `Đăng bởi <b>${data.poster}</b> on <b>${data.createdAt}</b>`;
+    let created = new Date(data.createdAt);
+    policyTime.innerHTML = `Đăng bởi <b>${
+        data.poster
+    }</b> on <b>${created.getDate()}-${
+        created.getMonth() + 1
+    }-${created.getFullYear()}</b>`;
     let policyContent = document.querySelector(".policy__content");
     policyContent.innerHTML = "";
     if (data.img) {
@@ -32,5 +37,4 @@ function renderPolicy(data) {
             policyContent.innerHTML += `<img src="${data.imgs[i].img}" alt="">`;
         }
     }
-    console.log(data);
 }

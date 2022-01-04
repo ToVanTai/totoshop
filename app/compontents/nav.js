@@ -48,3 +48,27 @@ function renderNavItems(list) {
     });
     return html;
 }
+let searchBtnOpenMobile = conFig.$(".main__nav__mobile__search");
+
+let searchBtnOpenLarge = conFig.$(".main__nav__header__search");
+
+let mainSearchEl = document.querySelector(".main__search");
+
+let searchOverlayEl = conFig.$(".search__overlay");
+
+let btnSearch = conFig.$(".main__search__container .button-search");
+let btnClose = conFig.$(".main__search__container .button-close");
+searchBtnOpenMobile.addEventListener("click", onOpenSearch);
+searchBtnOpenLarge.addEventListener("click", onOpenSearch);
+searchOverlayEl.addEventListener("click", onCloseSearch);
+btnSearch.addEventListener("click", onCloseSearch);
+btnClose.addEventListener("click", onCloseSearch);
+
+function onOpenSearch() {
+    mainSearchEl.classList.add("show");
+    searchOverlayEl.classList.add("show");
+}
+function onCloseSearch() {
+    mainSearchEl.classList.remove("show");
+    searchOverlayEl.classList.remove("show");
+}
